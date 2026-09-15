@@ -1,0 +1,21 @@
+{
+  "_INSTRUCOES": "MCPs especificos do garageos. Os globais (apify, context7, memory, shadcn, playwright, filesystem, tavily, magic, clickup, linear, paper) sao herdados de ~/.claude.json, nao duplicar aqui. Segredos em .env.mcp.local, carregados pelos wrappers em mcp/.",
+  "mcpServers": {
+    "supabase": {
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "mcp/supabase.ps1"]
+    },
+    "github": {
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "mcp/github.ps1"]
+    },
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com"
+    },
+    "resend": {
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "mcp/resend.ps1"]
+    }
+  }
+}
