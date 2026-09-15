@@ -9,10 +9,12 @@ const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
  * guardados só no navegador (ver supabase-demo.ts). Preencher o .env e
  * reiniciar o `npm run dev` volta pro banco de verdade.
  *
- * Só vale no `npm run dev`: um deploy sem as variáveis não pode virar um site
- * onde qualquer senha entra como admin.
+ * Só vale no `npm run dev`, ou num build feito de propósito com
+ * `VITE_DEMO_MODE=true` (link de apresentação). Um deploy comum sem as
+ * variáveis não pode virar um site onde qualquer senha entra como admin.
  */
-export const isDemoMode = import.meta.env.DEV && (!url || !anonKey);
+const demoPermitido = import.meta.env.DEV || import.meta.env.VITE_DEMO_MODE === "true";
+export const isDemoMode = demoPermitido && (!url || !anonKey);
 
 if (isDemoMode) {
   console.warn(
